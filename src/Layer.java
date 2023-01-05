@@ -1,5 +1,7 @@
-public class Layer {
-	private int inputAmount;
+import java.io.Serializable;
+import java.util.*;
+public class Layer implements Serializable {
+	private final int inputAmount;
 	private Neuron[] neurons;
 	
 	public Layer(int inputAmount, int outputAmount) {
@@ -23,4 +25,12 @@ public class Layer {
 		}
 		return output;
 	}
+
+	public ArrayList<Value> parameters(ArrayList<Value> list) {
+		for (Neuron n : neurons) {
+			n.parameters(list);
+		}
+		return list;
+	}
+
 }
